@@ -1,0 +1,25 @@
+{
+  "name": "nodejs_exercise",
+  "version": "1.0.0",
+  "description": "Exercise Nodejs interview",
+  "scripts": {
+    "test": "mocha --exit ./test/*.test.js",
+    "m1": "node src/m1.js",
+    "m2": "node src/m2.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "express": "^4.18.2",
+    "uuid": "^9.0.0",
+    "winston": "^3.10.0"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "chai-http": "^4.4.0",
+    "mocha": "^10.2.0",
+    "sinon": "^15.2.0"
+  }
+}

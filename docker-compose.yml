@@ -1,0 +1,29 @@
+version: '3'
+services:
+  rabbit:
+    image: rabbitmq:management
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+
+  m1:
+    build:
+      context: .
+      dockerfile: Dockerfile.m1
+    ports:
+      - "3000:3000"
+    environment:
+      - RABBITMQ_HOST=rabbit
+    depends_on:
+      - rabbit
+    command: ["/wait-for.sh", "rabbit:5672", "-t", "0", "--", "npm", "run", "m1"]
+      
+  m2:
+    build:
+      context: .
+      dockerfile: Dockerfile.m2
+    environment:
+      - RABBITMQ_HOST=rabbit
+    depends_on:
+      - rabbit
+    command: ["/wait-for.sh", "rabbit:5672", "-t", "0", "--", "npm", "run", "m2"]
